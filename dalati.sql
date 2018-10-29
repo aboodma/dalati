@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2018 at 08:01 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.10
+-- Generation Time: Oct 29, 2018 at 03:52 PM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -91,7 +91,40 @@ CREATE TABLE `offices` (
 --
 
 INSERT INTO `offices` (`o_id`, `o_name`, `create_at`) VALUES
-(1, 'Zamzam', '2018-10-28 21:00:21');
+(1, 'Zamzam', '2018-10-28 21:00:21'),
+(2, 'lsadaasdasd', '2018-10-29 11:18:01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `office_account`
+--
+
+CREATE TABLE `office_account` (
+  `id` int(11) NOT NULL,
+  `office_id` int(11) NOT NULL,
+  `customer_name` varchar(255) NOT NULL,
+  `age` date NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `passport_id` varchar(255) NOT NULL,
+  `service_id` int(11) NOT NULL,
+  `price` varchar(255) NOT NULL,
+  `currency_id` int(11) NOT NULL,
+  `paid` int(11) NOT NULL,
+  `remain_price` varchar(255) NOT NULL,
+  `completed` int(11) NOT NULL,
+  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `completed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `office_account`
+--
+
+INSERT INTO `office_account` (`id`, `office_id`, `customer_name`, `age`, `phone`, `passport_id`, `service_id`, `price`, `currency_id`, `paid`, `remain_price`, `completed`, `create_at`, `completed_at`) VALUES
+(1, 1, 'hamood', '2018-10-29', '56848454654', '5464984894', 2, '20', 1, 20, '0', 0, '2018-10-29 14:46:03', '2018-10-29 14:47:35'),
+(3, 2, 'asdasdasda', '2018-10-29', '654654654', '654654654', 1, '30', 1, 30, '30', 0, '2018-10-29 14:48:17', '2018-10-29 14:48:17'),
+(4, 2, 'asdasdasda', '2018-10-29', '654654654', '654654654', 1, '30', 1, 30, '30', 0, '2018-10-29 14:48:17', '2018-10-29 14:48:17');
 
 -- --------------------------------------------------------
 
@@ -137,6 +170,15 @@ ALTER TABLE `offices`
   ADD PRIMARY KEY (`o_id`);
 
 --
+-- Indexes for table `office_account`
+--
+ALTER TABLE `office_account`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `office_id` (`office_id`),
+  ADD KEY `currency_id` (`currency_id`),
+  ADD KEY `service_id` (`service_id`);
+
+--
 -- Indexes for table `services`
 --
 ALTER TABLE `services`
@@ -156,13 +198,19 @@ ALTER TABLE `currency`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `offices`
 --
 ALTER TABLE `offices`
-  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `office_account`
+--
+ALTER TABLE `office_account`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `services`
@@ -180,6 +228,14 @@ ALTER TABLE `services`
 ALTER TABLE `customers`
   ADD CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`service_id`) REFERENCES `services` (`s_id`),
   ADD CONSTRAINT `customers_ibfk_2` FOREIGN KEY (`currency`) REFERENCES `currency` (`currency_id`);
+
+--
+-- Constraints for table `office_account`
+--
+ALTER TABLE `office_account`
+  ADD CONSTRAINT `office_account_ibfk_1` FOREIGN KEY (`office_id`) REFERENCES `offices` (`o_id`),
+  ADD CONSTRAINT `office_account_ibfk_2` FOREIGN KEY (`currency_id`) REFERENCES `currency` (`currency_id`),
+  ADD CONSTRAINT `office_account_ibfk_3` FOREIGN KEY (`service_id`) REFERENCES `services` (`s_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
