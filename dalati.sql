@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2018 at 03:52 PM
+-- Generation Time: Oct 31, 2018 at 09:38 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -77,6 +77,31 @@ INSERT INTO `customers` (`c_id`, `c_name`, `c_age`, `c_phone`, `passport_id`, `s
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `ikamet`
+--
+
+CREATE TABLE `ikamet` (
+  `id` int(11) NOT NULL,
+  `person` varchar(255) NOT NULL,
+  `sgk_no` varchar(255) NOT NULL,
+  `passport_no` varchar(255) NOT NULL,
+  `req_date` date NOT NULL,
+  `place` text NOT NULL,
+  `ready` int(11) NOT NULL,
+  `got_it` int(11) NOT NULL,
+  `renew_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ikamet`
+--
+
+INSERT INTO `ikamet` (`id`, `person`, `sgk_no`, `passport_no`, `req_date`, `place`, `ready`, `got_it`, `renew_date`) VALUES
+(1, 'abood', '123456789', '123456789', '2018-10-31', 'sultan bely', 1, 0, '2018-12-29');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `offices`
 --
 
@@ -124,7 +149,8 @@ CREATE TABLE `office_account` (
 INSERT INTO `office_account` (`id`, `office_id`, `customer_name`, `age`, `phone`, `passport_id`, `service_id`, `price`, `currency_id`, `paid`, `remain_price`, `completed`, `create_at`, `completed_at`) VALUES
 (1, 1, 'hamood', '2018-10-29', '56848454654', '5464984894', 2, '20', 1, 20, '0', 0, '2018-10-29 14:46:03', '2018-10-29 14:47:35'),
 (3, 2, 'asdasdasda', '2018-10-29', '654654654', '654654654', 1, '30', 1, 30, '30', 0, '2018-10-29 14:48:17', '2018-10-29 14:48:17'),
-(4, 2, 'asdasdasda', '2018-10-29', '654654654', '654654654', 1, '30', 1, 30, '30', 0, '2018-10-29 14:48:17', '2018-10-29 14:48:17');
+(4, 2, 'asdasdasda', '2018-10-29', '654654654', '654654654', 1, '30', 1, 30, '30', 0, '2018-10-29 14:48:17', '2018-10-29 14:48:17'),
+(5, 1, 'aboodma', '2018-10-31', '54848484', '545515454', 1, '300', 1, 300, '0', 0, '2018-10-31 19:27:47', '2018-10-31 19:27:47');
 
 -- --------------------------------------------------------
 
@@ -164,6 +190,12 @@ ALTER TABLE `customers`
   ADD KEY `currency` (`currency`);
 
 --
+-- Indexes for table `ikamet`
+--
+ALTER TABLE `ikamet`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `offices`
 --
 ALTER TABLE `offices`
@@ -201,6 +233,12 @@ ALTER TABLE `customers`
   MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `ikamet`
+--
+ALTER TABLE `ikamet`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `offices`
 --
 ALTER TABLE `offices`
@@ -210,7 +248,7 @@ ALTER TABLE `offices`
 -- AUTO_INCREMENT for table `office_account`
 --
 ALTER TABLE `office_account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `services`
