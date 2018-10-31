@@ -31,12 +31,7 @@
 
                           </a>
                           <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" id="Add_Account" data-toggle="modal" data-target="#Add_Account" href="#">
-                              <i class="flaticon-share"></i>
-
-                              إضافة حساب لــ
-                              <?=$row['o_name']?>
-                            </a>
+                            
                             <a class="dropdown-item"  href="index.php?id=<?=$row['o_id']?>&pc=SoA&pn=حساب مكتب<?=$row['o_name']?>">
                               <i class="flaticon-share"></i>
 

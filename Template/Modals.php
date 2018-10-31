@@ -137,12 +137,12 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="CustomerForm" name="CustomerForm">
-
+        <form id="SingleOfficeAcountForm" name="SingleOfficeAcountForm">
+          <input type="hidden" id="OfficeId" name="OfficeId"  value="<?=$_GET['id']?>" >
 
         <div class="form-group has-success">
           <label class="control-label" for="inputSuccess1">إسم الزبون</label>
-          <input required type="text" class="form-control form-control" name="CustomerName" value="<?=$id[1]?>" id="CustomerName">
+          <input required type="text" class="form-control form-control" name="CustomerName" value="" id="CustomerName">
         </div>
         <div class="form-group has-warning">
           <label class="control-label" for="inputWarning1">عمر الزبون</label>

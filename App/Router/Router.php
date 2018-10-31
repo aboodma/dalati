@@ -26,11 +26,14 @@ if (isset($_GET['pc'])) {
             case 'SoA':
             include 'App/Includes/Accounts/SingleOfficeAccounts.php';
             break;
+            case 'Rp':
+            include 'App/Includes/RP.php';
+            break;
 
             case 'Services':
               include 'App/Includes/Settings/Services.php';
               break;
-              
+
 
     default:
         include 'App/Includes/Accounts/AccountsHome.php';

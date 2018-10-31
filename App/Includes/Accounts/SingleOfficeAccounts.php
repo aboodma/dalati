@@ -1,6 +1,11 @@
 <?php include 'Template/Modals.php';?>
 <div class="m-grid__item m-grid__item--fluid m-wrapper">
   <?php include 'Template/Sub_Header.php';?>
+  
+  <a href="#" class="btn btn-primary m-btn m-btn--icon m-btn--pill m-btn--air "id="Add_Account" data-toggle="modal" data-target="#Add_Account" aria-haspopup="true" aria-expanded="false">
+                                <i class="la la-plus"></i>إضافة حساب  
+
+                              </a>
   <div class="m-content">
 
     <table id="example" class="display" style="width:100%">
@@ -32,7 +37,7 @@
                     <tr>
 
                       <td><?=$row['id']?></td>
-                      <td><?=$row['o_name']?></td>
+                      <td><?=$row['customer_name']?></td>
                       <td><?=$row['age']?></td>
                       <td><?=$row['phone']?></td>
                       <td><?=$row['passport_id']?></td>

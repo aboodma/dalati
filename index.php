@@ -16,6 +16,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script src="assets/OfficesAccounts.js" charset="utf-8"></script>
 	<script src="assets/CustomersAccounts.js" charset="utf-8"></script>
+	<script src="assets/SingleOfficeAccount.js" charset="utf-8"></script>
 
 	<script src="assets/datatables.js" charset="utf-8"></script>
 	<?php include 'Template/Scripts.php';?>
