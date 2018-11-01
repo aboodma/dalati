@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2018 at 09:38 PM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Generation Time: Nov 01, 2018 at 09:34 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -52,12 +52,14 @@ CREATE TABLE `customers` (
   `c_name` varchar(255) NOT NULL,
   `c_age` date NOT NULL,
   `c_phone` varchar(20) NOT NULL,
+  `employee_id` int(11) NOT NULL,
   `passport_id` varchar(30) NOT NULL,
   `service_id` int(11) NOT NULL,
   `price` varchar(30) NOT NULL,
   `currency` int(11) NOT NULL,
   `paid` varchar(30) NOT NULL,
   `remain_price` varchar(30) NOT NULL,
+  `orginal_price` varchar(5) NOT NULL,
   `completed` int(11) NOT NULL DEFAULT '0',
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `completed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -67,12 +69,32 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`c_id`, `c_name`, `c_age`, `c_phone`, `passport_id`, `service_id`, `price`, `currency`, `paid`, `remain_price`, `completed`, `create_at`, `completed_at`) VALUES
-(1, 'Abdulrahman Mardini', '1995-12-21', '00905375280964', '54652558', 2, '500', 1, '200', '300', 0, '2018-10-27 21:00:00', '2018-10-27 22:36:59'),
-(2, 'Abdulrahman Mardini', '1995-12-21', '0111222555', '54652558', 2, '500', 1, '200', '300', 0, '2018-10-27 21:00:00', '2018-10-27 22:44:09'),
-(3, 'Abdulrahman Mardini', '1995-12-21', '00905375280964', '54652558', 1, '500', 2, '200', '300', 0, '2018-10-27 21:00:00', '2018-10-27 22:37:03'),
-(4, 'Ahmad Dalati', '2018-10-28', '45545456464', '564654654654', 1, '500', 1, '5000', '5000', 0, '2018-10-28 11:04:03', '2018-10-28 11:04:03'),
-(5, 'Ahmad Dalati', '2018-10-28', '5146548888', '564654654654', 1, '500', 1, '500', '0', 0, '2018-10-28 20:38:15', '2018-10-28 20:38:15');
+INSERT INTO `customers` (`c_id`, `c_name`, `c_age`, `c_phone`, `employee_id`, `passport_id`, `service_id`, `price`, `currency`, `paid`, `remain_price`, `orginal_price`, `completed`, `create_at`, `completed_at`) VALUES
+(1, '??? ?????? ???????', '2018-11-30', '00905375280964', 2, '00905375280964', 1, '500', 1, '200', '300', '100', 1, '2018-11-01 19:26:25', '2018-11-01 20:27:53'),
+(2, 'Abdulrahman mardini  ', '2018-11-30', '00905375280964', 2, '00905375280964', 1, '500', 1, '200', '300', '100', 1, '2018-11-01 19:26:50', '2018-11-01 20:27:45'),
+(3, 'Husaen Mardini', '1995-02-12', '0906558777', 1, '78789777', 1, '300', 1, '100', '200', '100', 1, '2018-11-01 20:02:04', '2018-11-01 20:25:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee`
+--
+
+CREATE TABLE `employee` (
+  `e_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`e_id`, `name`, `username`, `password`) VALUES
+(1, 'Ahmad Dalati', 'admin', 'admin'),
+(2, 'Abdulrahman Dalati', NULL, NULL),
+(3, 'Mulham Janat', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -187,7 +209,14 @@ ALTER TABLE `currency`
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`c_id`),
   ADD KEY `service_id` (`service_id`),
-  ADD KEY `currency` (`currency`);
+  ADD KEY `currency` (`currency`),
+  ADD KEY `employee_id` (`employee_id`);
+
+--
+-- Indexes for table `employee`
+--
+ALTER TABLE `employee`
+  ADD PRIMARY KEY (`e_id`);
 
 --
 -- Indexes for table `ikamet`
@@ -230,7 +259,13 @@ ALTER TABLE `currency`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `employee`
+--
+ALTER TABLE `employee`
+  MODIFY `e_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ikamet`
@@ -265,7 +300,8 @@ ALTER TABLE `services`
 --
 ALTER TABLE `customers`
   ADD CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`service_id`) REFERENCES `services` (`s_id`),
-  ADD CONSTRAINT `customers_ibfk_2` FOREIGN KEY (`currency`) REFERENCES `currency` (`currency_id`);
+  ADD CONSTRAINT `customers_ibfk_2` FOREIGN KEY (`currency`) REFERENCES `currency` (`currency_id`),
+  ADD CONSTRAINT `customers_ibfk_3` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`e_id`);
 
 --
 -- Constraints for table `office_account`

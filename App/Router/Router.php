@@ -26,6 +26,9 @@ if (isset($_GET['pc'])) {
             case 'SoA':
             include 'App/Includes/Accounts/SingleOfficeAccounts.php';
             break;
+            case 'SeA':
+            include 'App/Includes/Accounts/SingleEmployeeAccounts.php';
+            break;
             case 'Rp':
             include 'App/Includes/RP.php';
             break;

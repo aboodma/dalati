@@ -454,8 +454,8 @@
 											</ul>
 										</div>
 									</li>
-									<li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs"   aria-haspopup="true">
-										<a  href="index.php?pc=Rp&pn=إقامات" class="m-menu__link m-menu__toggle">
+									<li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs"   >
+										<a  href="index.php?pc=Rp&pn=إقامات" class="m-menu__link ">
 											<span class="m-menu__link-text">إقامات</span>
 											<i class="m-menu__hor-arrow la la-angle-down"></i>
 											<i class="m-menu__ver-arrow la la-angle-right"></i>

@@ -28,6 +28,25 @@
           <input required type="text" class="form-control form-control" name="PassportNo" id="PassportNo">
         </div>
         <div class="form-group has-error">
+          <label class="control-label" for="inputError1">إسم الموظف</label>
+          <select required class="form-control form-control" name="employee_id"  id="employee_id">
+            <?php
+            include "App/Core/Accounts/GetEmployies.php";
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                  ?>
+            <option value="<?=$row['e_id']?>"><?=$row['name']?></option>
+            <?php
+
+          }
+      } else {
+          echo "0 results";
+      }
+      ?>
+          </select>
+        </div>
+        <div class="form-group has-error">
           <label class="control-label" for="inputError1">نوع الخدمة</label>
           <select required class="form-control form-control" name="ServiceType"  id="ServiceType">
             <?php
